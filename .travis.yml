@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t sdvaradkin/docker-react .
+
+script:
+  - docker run -e CI=true sdvaradkin/docker-react npm run test
